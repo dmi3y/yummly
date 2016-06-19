@@ -4,7 +4,7 @@
 
 const DEFAULT_STATE = {
   isFetching: false,
-  maxResult: 10,
+  maxResult: 30,
   start: 0,
   query: null,
   recipes: []

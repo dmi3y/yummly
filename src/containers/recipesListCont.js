@@ -5,13 +5,30 @@
 
 import { connect } from 'react-redux'
 import recipesList from '../components/recipesList'
+import {
+  fetchRecipesData
+} from '../actions'
 
-const mapStateToProps = (state) => ({
-  recipes: state.recipesData.recipes
-})
+const mapStateToProps = (state) => {
+  let r = state.recipesData
+  return ({
+    recipes: r.recipes,
+    hasNothingFound: r.query && !r.recipes.lenght && !r.isFetching,
+    query: r.query
+  })
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onClickMore (query) {
+      dispatch(fetchRecipesData(query))
+    }
+  }
+}
 
 const recipesListCont = connect(
-  mapStateToProps
+  mapStateToProps,
+  mapDispatchToProps
 )(recipesList)
 
 export default recipesListCont

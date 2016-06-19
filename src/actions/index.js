@@ -29,7 +29,11 @@ export function resetRecipesData () {
 }
 
 export function fetchRecipesData (query) {
-  return function (dispatch) {
+  return function (dispatch, getState) {
+    let state = getState()
+    let {maxResult, start} = state.recipesData
+    query.maxResult = maxResult
+    query.start = start
     dispatch(requestRecipesData(query))
     let data = query
     return $.get(

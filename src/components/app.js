@@ -11,7 +11,6 @@ import Logo from './logo'
 class App extends React.Component {
   render () {
     var headerClasses = classNames({
-      'header': true,
       'loading': this.props.isFetching
     })
 
@@ -19,7 +18,9 @@ class App extends React.Component {
       <div className='container'>
         <header className={headerClasses}>
           <Logo />
-          <SearchFormCont />
+          <div className='wrapper'>
+            <SearchFormCont />
+          </div>
         </header>
         <main>
           {this.props.children}

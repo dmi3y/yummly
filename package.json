@@ -1,0 +1,46 @@
+{
+  "name": "yummly-web",
+  "version": "1.0.0",
+  "description": "Yummly web based client",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"@TODO\"",
+    "clean": "rm -rf ./build/*",
+    "compile-styles": "./tasks/compile-styles.sh",
+    "watch-styles": "sane 'npm run compile-styles' ./src/styles --glob='**/*.scss'",
+    "compile-scripts": "webpack --config webpack-production.config.js -p",
+    "watch-scripts": "webpack --watch -d",
+    "copy-index": "cp ./src/index.html ./build",
+    "prebuild": "npm run clean",
+    "build": "./tasks/build.sh",
+    "surge": "surge ./build yummly.surge.sh",
+    "deploy": "npm run build && npm run surge"
+  },
+  "author": "Dmitrii Lapshukov <lapshukov@gmail.com>",
+  "license": "ISC",
+  "devDependencies": {
+    "sane": "1.3.4"
+  },
+  "dependencies": {
+    "autoprefixer": "6.3.6",
+    "babel-core": "6.9.0",
+    "babel-loader": "6.2.4",
+    "babel-preset-es2015": "6.9.0",
+    "babel-preset-react": "6.5.0",
+    "classnames": "2.2.5",
+    "jquery": "2.2.4",
+    "moment": "2.13.0",
+    "node-sass": "3.7.0",
+    "postcss-cli": "2.5.2",
+    "postcss-inline-image": "0.1.1",
+    "react": "15.1.0",
+    "react-dom": "15.1.0",
+    "react-redux": "4.4.5",
+    "react-router": "2.4.1",
+    "redux": "3.5.2",
+    "redux-thunk": "2.1.0",
+    "stats-webpack-plugin": "0.3.1",
+    "surge": "0.18.0",
+    "webpack": "1.13.1"
+  }
+}

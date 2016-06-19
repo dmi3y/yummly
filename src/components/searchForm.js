@@ -25,6 +25,9 @@ class searchForm extends React.Component {
           <input type='text' name='q' className='input' autoComplete='off' />
           <input type='hidden' name='maxResult' value={maxResult} />
           <input type='hidden' name='start' value={start} />
+          {/** the allowed diet below seems not working as advertized **/}
+          {/** see @ https://developer.yummly.com/documentation **/}
+          <input type='hidden' name='allowedDiet[]' value='390^Vegan' />
           <button type='submit' className='submit'>Show</button>
           <button type='reset' className='reset'>Reset</button>
         </form>

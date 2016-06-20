@@ -12,8 +12,17 @@ const headers = {
 const apiUri = 'http://api.yummly.com/v1/api'
 const recipesUri = `${apiUri}/recipes`
 const recipeUri = `${apiUri}/recipe`
+import { hashHistory } from 'react-router'
 
 $.ajaxSetup({headers})
+
+export function setFormData (data) {
+  return { type: 'SET_FORM_DATA', data }
+}
+
+export function resetFormData () {
+  return { type: 'RESET_FORM_DATA' }
+}
 
 /* request recipes (multiply) data */
 export function requestRecipesData (query) {
@@ -28,14 +37,18 @@ export function resetRecipesData () {
   return { type: 'RESET_RECIPES_DATA' }
 }
 
-export function fetchRecipesData (query) {
+export function fetchRecipesData (data) {
   return function (dispatch, getState) {
     let state = getState()
-    let {maxResult, start} = state.recipesData
-    query.maxResult = maxResult
-    query.start = start
-    dispatch(requestRecipesData(query))
-    let data = query
+    let {maxResult, start, query} = state.recipesData
+    data.maxResult = maxResult
+    data.start = start
+
+    if (query && query.q !== data.q) {
+      dispatch(resetRecipesData())
+    }
+
+    dispatch(requestRecipesData(data))
     return $.get(
       recipesUri,
       data
@@ -43,6 +56,7 @@ export function fetchRecipesData (query) {
     .then(
       (data) => dispatch(receiveRecipesData(data.matches || []))
     )
+    .fail(() => hashHistory.push('/fallback'))
   }
 }
 
@@ -68,5 +82,6 @@ export function fetchRecipeData (id) {
     .then(
       (data) => dispatch(receiveRecipeData(data))
     )
+    .fail(() => hashHistory.push('/fallback'))
   }
 }

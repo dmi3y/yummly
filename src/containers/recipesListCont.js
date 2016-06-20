@@ -14,7 +14,8 @@ const mapStateToProps = (state) => {
   return ({
     recipes: r.recipes,
     hasNothingFound: r.query && !r.recipes.lenght && !r.isFetching,
-    query: r.query
+    query: r.query,
+    isFetching: r.isFetching
   })
 }
 

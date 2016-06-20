@@ -1,6 +1,10 @@
+@import "http://fontawesome.io/assets/font-awesome/css/font-awesome.css";
+
 @import "helpers";
 @import "layout";
+@import "fallback";
 @import "elements";
 @import "header";
 @import "search-form";
 @import "recipes-list";
+@import "recipes-detail";

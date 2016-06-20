@@ -1,6 +1,6 @@
 /**
- * @module components/app
- * @description Assembles application
+ * @module components/logo
+ * @description Application logo
  */
 
 import React from 'react'

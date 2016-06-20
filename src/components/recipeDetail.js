@@ -13,26 +13,43 @@ class RecipeDetail extends React.Component {
       isFetching
     } = this.props
     return (
-      <article>
-        {
-          isFetching ? <div>loading</div>
-          : (
-            <div className='wrapper'>
-              <h1>{recipe.name}</h1>
-              <time datetime={moment(new Date(recipe.totalTime)).format()}>
-                {recipe.totalTime}
-              </time>
-              <img
-                src={recipe.images[0].imageUrlsBySize[360]}
-                alt={recipe.name}
-              />
-              <ol>
-                {recipe.ingredientLines.map((ing, ix) => <li key={ix}>{ing}</li>)}
-              </ol>
-            </div>
-          )
-        }
-      </article>
+      <div className='wrapper'>
+        <article>
+          {
+            isFetching ? (
+              <div className='detail-loading'>
+                <i className='fa fa-cog fa-spin fa-3x fa-fw'></i>
+                <span className='sr-only'>Loading...</span>
+              </div>
+            )
+            : (
+              <div className='recipe-detail'>
+                <h1>{recipe.name}</h1>
+                <div className='meta'>
+                  <time datetime={moment(new Date(recipe.totalTime)).format()}>
+                    <i className='fa fa-clock-o fa-1x fa-fw'></i>
+                    {recipe.totalTime}
+                  </time>
+                  <span>
+                    <i className='fa fa-cutlery fa-1x fa-fw'></i>
+                    {recipe.numberOfServings}
+                  </span>
+                </div>
+                <div className='clear'></div>
+                <img
+                  src={recipe.images[0].imageUrlsBySize[360]}
+                  alt={recipe.name}
+                />
+                <ol>
+                  {recipe.ingredientLines.map((ing, ix) => <li key={ix}>
+                    <span>{ing}</span>
+                  </li>)}
+                </ol>
+              </div>
+            )
+          }
+        </article>
+      </div>
     )
   }
 }

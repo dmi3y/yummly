@@ -1,0 +1,39 @@
+.detail-loading {
+  padding-top: 200px;
+}
+
+article {
+
+  .recipe-detail {
+    text-align: left;
+  }
+
+  h1 {
+    border-bottom: 2px solid #BDB9B9;
+    padding: 10px 0;
+    margin-bottom: 10px;
+  }
+  .meta {
+    padding-bottom: 10px;
+
+    span {
+      margin-left: 15px;
+    }
+  }
+
+  ol {
+    font-size: 25px;
+    padding: 0;
+    margin: 10px 0;
+    color: #FF9938;
+  }
+
+  li {
+    font-size: 18px;
+    padding: 5px 0 5px 15px;
+
+    span {
+      color: #6C6C6C;
+    }
+  }
+}

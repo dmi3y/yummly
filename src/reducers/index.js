@@ -7,6 +7,7 @@ import { combineReducers } from 'redux'
 
 import recipesData from './recipesData'
 import recipeData from './recipeData'
+import formData from './formData'
 
 /* Shape for the state data
   {
@@ -21,13 +22,17 @@ import recipeData from './recipeData'
       isFetching: false,
       id: null,
       recipe: {}
+    },
+    formData: {
+      input: ''
     }
   }
 */
 
 const appReducers = combineReducers({
   recipesData,
-  recipeData
+  recipeData,
+  formData
 })
 
 export default appReducers

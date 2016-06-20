@@ -8,6 +8,7 @@ import { Router, Route, hashHistory } from 'react-router'
 import AppCont from '../containers/appCont'
 import RecipesListCont from '../containers/recipesListCont'
 import RecipeDetailCont from '../containers/recipeDetailCont'
+import Fallback from './fallback'
 
 class RouterProxy extends React.Component {
   render () {
@@ -18,11 +19,13 @@ class RouterProxy extends React.Component {
         <Route component={AppCont}>
           <Route path='/' component={RecipesListCont} />
           <Route
-            path='/:id'
+            path='/recipie/:id'
             component={RecipeDetailCont}
             onEnter={onRecipeEnter}
             onLeave={afterRecipeLeave}
           />
+          <Route path='/fallback' component={Fallback} />
+          <Route path='/*' component={Fallback} />
         </Route>
       </Router>
     )

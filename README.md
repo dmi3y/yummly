@@ -2,9 +2,14 @@
 
 > Based on ReactJs, [Redux][redux] and Webpack
 
+## Demo
+
+[yummly.surge.sh](http://yummly.surge.sh)
+
 ## API endpoints
 
- - http://api.yummly.com/v1/api/recipes?q={search+string}
+ - http://api.yummly.com/v1/api/recipes?q={search+string}( + additional query parameters)
+ - http://api.yummly.com/v1/api/recipe/:id
 
  More on [documentation][yummly-api-docs] page.
 

@@ -8,26 +8,24 @@ import SearchFormCont from '../containers/searchFormCont'
 import classNames from 'classnames'
 import Logo from './logo'
 
-class App extends React.Component {
-  render () {
-    var headerClasses = classNames({
-      'loading': this.props.isFetching
-    })
+let App = ({isFetching, children}) => {
+  var headerClasses = classNames({
+    'loading': isFetching
+  })
 
-    return (
-      <div className='container'>
-        <header className={headerClasses}>
-          <Logo />
-          <div className='wrapper'>
-            <SearchFormCont />
-          </div>
-        </header>
-        <main>
-          {this.props.children}
-        </main>
-      </div>
-    )
-  }
+  return (
+    <div className='container'>
+      <header className={headerClasses}>
+        <Logo />
+        <div className='wrapper'>
+          <SearchFormCont />
+        </div>
+      </header>
+      <main>
+        {children}
+      </main>
+    </div>
+  )
 }
 
 export default App

@@ -5,16 +5,10 @@
 
 import $ from 'jquery'
 
-const headers = {
-  'X-Yummly-App-ID': 'decfb99e',
-  'X-Yummly-App-Key': ' 6fe05346f049b28255378b6e7936acc2'
-}
-const apiUri = 'http://api.yummly.com/v1/api'
-const recipesUri = `${apiUri}/recipes`
-const recipeUri = `${apiUri}/recipe`
-import { hashHistory } from 'react-router'
-
+import {headers, recipesUri, recipeUri} from '../appConfig'
 $.ajaxSetup({headers})
+
+import { hashHistory } from 'react-router'
 
 export function setFormData (data) {
   return { type: 'SET_FORM_DATA', data }
